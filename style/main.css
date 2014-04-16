@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0px; padding:0px; font-size:12px; font-family:"微软雅黑"; color:#888; overflow-x:hidden;}
+a{color:#707070; text-decoration:none; outline:none;}
+a:active{star:expression(this.onFocus=this.blur());} 
+img{border:0px;}
+a:link {text-decoration: none; outline:none;}
+a:visited{text-decoration: none; outline:none;}
+a:hover{text-decoration:none; color:#1c5a97; outline:none;}
+ul, p, dl, dt, dd{padding:0px; margin:0px;}
+li{list-style-position:outside; list-style-type:none;}
+h1, h2, h3, h4, h5{font-size:14px; padding:0px; margin:0px;}
+h1{font-size:16px;}
+h5{font-size:12px;}
+.fl{float:left;}
+.fr{float:right;}
+.clear_f{clear:both; height:0px; padding:0px; margin:0px; display:block; _display:inherit;}
+.h10{height:10px; overflow:hidden; clear:both;}
+.h20{height:20px; overflow:hidden; clear:both;}
+.h50{height:50px; overflow:hidden; clear:both;}
+
+.wal{width:980px; margin:0px auto; overflow:hidden;}
+.red{color:#d80312;}
+
+.headDiv{height:50px; line-height:50px; width:100%; overflow:hidden; background:#1d1d1d; color:#FFF; font-family:"微软雅黑"; position:fixed; z-index:1000; left:0px; top:0px;}
+.headDiv a{color:#767676;}
+.headDiv a:hover{color:#dd1201;}
+.headDiv .logo{position:absolute; z-index:1; left:120px; top:4px;}
+.headDiv li{float:left; padding:0 8px;}
+.nav{position:absolute; z-index:1; left:303px; top:0px;}
+.nav .li_02 a:hover{color:#f39924;}
+.nav .li_03 a:hover{color:#f39924;}
+.topTel{position:absolute; z-index:1; right:120px; top:0px;}
+
+a, .aboutPart2 li{
+    -webkit-transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -ms-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
+	}		
+	
+.footNav{height:209px; overflow:hidden; background:#181818; font-family:"微软雅黑";}
+.footNav .fl li{float:left; width:113px; overflow:hidden;}
+.footNav .fl h5{font-weight:100; padding:50px 0 15px 0;}
+.footNav .fl h5 a{color:#c0c0c0;}
+.footNav .fl .content{line-height:25px;}
+.footNav .fl a{color:#767676;}
+.footNav .fl a:hover, .footNav .fl h5 a:hover{color:#c51306;}
+.footNav .fr{padding-top:43px;}
+.footNav .fr li{float:left; width:96px; overflow:hidden; text-align:center; margin-right:5px; background:#1f1f1f; padding:10px 13px; color:#c0c0c0;}
+.footNav .fr .name{padding-bottom:6px;}
+.footDiv{height:151px; overflow:hidden; background:#181818; border-top:#2c2c2c solid 1px;}	
+.footDiv .wal{height:150px; width:595px; position:relative;}
+.footDiv .msg{text-align:right; padding-top:33px;}
+.footDiv .msg img{position:relative; top:6px;}
+.footDiv a{color:#c0c0c0;}
+
+.topA{display:block; width:36px; height:33px; overflow:hidden; background:url(../image/topA.gif) left top no-repeat; position:fixed; z-index:100; right:10px; bottom:10px;}
+.topA:hover{background:url(../image/topA.gif) left bottom no-repeat;}

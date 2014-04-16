@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="author" content="Tobias Wetzel" />
+<title>MooFlow V0.2 - Ajax-Example</title>
+<link rel="stylesheet" type="text/css" href="moo/styles.css" />
+<link rel="stylesheet" type="text/css" href="moo/MooFlow.css" />
+<script type="text/javascript" src="moo/mootools-1.2-core.js"></script>
+<script type="text/javascript" src="moo/mootools-1.2-more.js"></script>
+<script type="text/javascript" src="moo/MooFlow.js"></script>
+<script type="text/javascript">
+
+var myMooFlowPage = {	
+
+	start: function(){
+
+		var mf = new MooFlow($('MooFlow'), {
+			useSlider: true,
+			useAutoPlay: false,
+			useCaption: true,
+			useResize: true,
+			useKeyInput: true
+		});
+		
+		$$('.loadjson').addEvent('click', function(){
+			mf.loadJSON(this.get('href'));
+			return false;
+		});
+		$$('.loadremote').addEvent('click', function(){
+			mf.loadHTML(this.get('href'), this.get('rel'));
+			return false;
+		});
+		
+		var currentImg=mf.getCurrent(0);
+		$('MooFlow').addEvent('click',function(e){
+					var target=$(e.target);
+					if(currentImg.src==target.get('src')){
+					    window.open(currentImg.alt);
+					};
+					currentImg=mf.getCurrent();
+				});
+		
+	}
+	
+};
+window.addEvent('domready', myMooFlowPage.start);
+</script>
+</head>
+<body>
+<div id="content">
+	<div id="MooFlow">
+	    <div class="box"><img src="image/img290_1.jpg" title="强身健体、笑迎末日--12月21滑雪记1" alt="Activity.html" /></div>
+	    <div class="box"><img src="image/img290_2.jpg" title="强身健体、笑迎末日--12月21滑雪记2" alt="Activity.html" /></div>
+        <div class="box"><img src="image/img290.jpg" title="强身健体、笑迎末日--12月21滑雪记3" alt="Activity.html" /></div>
+        <div class="box"><img src="image/img290_3.jpg" title="强身健体、笑迎末日--12月21滑雪记4" alt="Activity.html" /></div>
+        <div class="box"><img src="image/img290_4.jpg" title="强身健体、笑迎末日--12月21滑雪记5" alt="Activity.html" /></div>
+        <div class="box"><img src="image/img290_5.jpg" title="强身健体、笑迎末日--12月21滑雪记6" alt="Activity.html" /></div>
+	</div>
+</div>
+
+</body>
+</html>
