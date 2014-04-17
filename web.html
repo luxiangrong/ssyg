@@ -19,6 +19,12 @@
 		DD_belatedPNG.fix('div, ul, img, li, input , a');
 		</script>
 		<![endif]-->
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 		<style type="text/css">
 			body {
 				background: #e4e5e7 url(image/caseBg.jpg) center top no-repeat;
@@ -85,7 +91,9 @@
 		</div>
 
 		<div class="webPart2 webPart1Div">
-			<div class="bg" style="background:url(image/img591.jpg) 250px 150px no-repeat fixed;"></div>
+			<div class="bg" style="background:url(image/img591.jpg) 0 150px no-repeat fixed;" data-parallax-background-inertia="0.3">
+				&nbsp;
+			</div>
 			<div class="wal">
 				<div class="title">
 					网站规划
@@ -136,13 +144,12 @@
 		</div>
 
 		<div class="webPart3 webPart1Div">
+			<div class="bg" style="width: 100%; height: 100%; background:url(image/img669.png) right top no-repeat fixed;" data-parallax-background-inertia="0.3"></div>
 			<div class="wal">
 				<div class="title">
 					交互设计
 				</div>
 				<div class="imgDiv"><img src="image/limg156.png" alt="" />
-				</div>
-				<div class="bg"><img src="image/img669.png" alt="" />
 				</div>
 				<div class="list">
 					<ul>
@@ -175,12 +182,11 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+				</div>
 		</div>
 
 		<div class="webPart2 webPart1Div">
-			<div class="bg1"><img src="image/img613.png" alt="" />
-			</div>
+			<div class="bg" style="width: 100%; height: 100%; background:url(image/img613.png) left top no-repeat fixed;" data-parallax-offset-top="60"  data-parallax-background-inertia="0.3"></div>
 			<div class="wal">
 				<div class="title">
 					网站设计
@@ -231,13 +237,12 @@
 		</div>
 
 		<div class="webPart3 webPart1Div">
+			<div class="bg" style="width: 100%; height: 100%; background:url(image/img524.png) right top no-repeat fixed;" data-parallax-background-inertia="0.3"></div>
 			<div class="wal">
 				<div class="title">
 					网站开发
 				</div>
 				<div class="imgDiv"><img src="image/limg156_1.png" alt="" />
-				</div>
-				<div class="bg"><img src="image/img524.png" alt="" />
 				</div>
 				<div class="list">
 					<ul>
@@ -311,7 +316,7 @@
 					<div class="col-sm-1 site-map">
 						<div class="list-group">
 							<p class="list-group-item title">
-								关于我们
+								<a href="about.html">关于我们</a>
 							</p>
 							<a class="list-group-item" href="#"> 精英团队 </a>
 							<a class="list-group-item" href="#"> 公司活动 </a>
@@ -328,24 +333,24 @@
 							<a class="list-group-item" href="#"> 联系方式 </a>
 						</div>
 					</div>
-					<div class="col-sm-5 ">
+					<div class="col-sm-4 ">
 						<div class="row qr">
 							<div class="col-sm-4">
 								<div class=" qr-box">
 									<h6>新浪微博</h6>
-									<img src="images/qr.jpg" alt="qr">
+									<img class="img-responsive" src="images/qr.jpg" alt="qr">
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class=" qr-box">
 									<h6>手机版官网</h6>
-									<img src="images/qr.jpg" alt="qr">
+									<img class="img-responsive" src="images/qr.jpg" alt="qr">
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class=" qr-box">
 									<h6>微信公众平台</h6>
-									<img src="images/qr.jpg" alt="qr">
+									<img class="img-responsive" src="images/qr.jpg" alt="qr">
 								</div>
 							</div>
 						</div>
@@ -354,13 +359,11 @@
 			</div>
 			<hr />
 			<div class="row">
-				<div class="col-sm-12">
 					<div class="copyright">
 						<img src="img/logo.png" />
 						版权所有 2001-2014 北京盛世阳光文化传播有限责任公司
 					</div>
 				</div>
-			</div>
 		</footer>
 	</body>
 </html>

@@ -19,7 +19,7 @@ h5{font-size:12px;}
 .h20{height:20px; overflow:hidden; clear:both;}
 .h50{height:50px; overflow:hidden; clear:both;}
 
-.wal{width:980px; margin:0px auto; overflow:hidden;}
+.wal{width:980px; margin:0px auto; overflow:visible; overflow:hidden\9;}
 .red{color:#d80312;}
 
 a, .aboutPart2 li{
