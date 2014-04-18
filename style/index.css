@@ -252,9 +252,10 @@
 
 .webPart2{height:620px; overflow:hidden; background:#5f5962; position:relative;}
 .webPart2 .wal{height:620px; width:1011px; overflow:visible; position:relative;}
-.webPart2 .title{line-height:150px; height:150px; overflow:hidden; color:#FFF; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:180px; left:170px;}
-.webPart2 .imgDiv{position:absolute; z-index:2; top:180px; left:-556px; opacity: 0; transition: all 1s;}
-.webPart2.in-viewport .imgDiv{left:0px; opacity: 1;}
+.webPart2 .title{line-height:150px; height:150px; overflow:hidden; color:#FFF; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:180px; left:2170px; transition: all 1s;}
+.webPart2.in-viewport .title{left:170px;}
+.webPart2 .imgDiv{position:absolute; z-index:2; top:180px; left:-556px;  transition: all 1s; -moz-transition: all 1s; -webkit-transition: all 1s; -ms-transition: all 1s;}
+.webPart2.in-viewport .imgDiv{left:0px; }
 .webPart2 .bg{position:absolute; z-index:0; top:0px; left:0px; width:100%; height:620px; overflow:hidden;}
 .webPart2 .list{padding-left:570px; position:relative; z-index:3;}
 .webPart2 li{height:122px; width:290px; overflow:hidden; position:relative; top:90px; padding-left:88px; color:#FFF; line-height:1.6em;}
@@ -267,7 +268,8 @@
 
 .webPart3{height:500px; overflow:hidden; background:#eee;}
 .webPart3 .wal{height:500px; position:relative;}
-.webPart3 .title{line-height:150px; height:150px; overflow:hidden; color:#333; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:150px; right:245px;}
+.webPart3 .title{line-height:150px; height:150px; overflow:hidden; color:#333; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:150px; right:2245px; transition: all 1s;}
+.webPart3.in-viewport .title{right:245px;}
 .webPart3 .imgDiv{position:absolute; z-index:2; top:150px; right:-563px;opacity: 0; transition: all 1s;}
 .webPart3.in-viewport .imgDiv{right:63px;opacity:1}
 .webPart3 .bg{position:absolute; z-index:1; top:0px; right:0px;}
