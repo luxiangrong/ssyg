@@ -144,6 +144,10 @@ window.requestAnimFrame = (function() {
 		var newPos = function(x, adjuster, inertia, pos) {
 			return x + " " + (adjuster - pos * inertia) + "px";
 		};
+		
+		var newTop = function(adjuster, inertia, pos) {
+			return (adjuster - pos * inertia) + "px";
+		};
 
 		//将background-position的css值转换成数值数组
 		function bgPosToArray(strg) {
@@ -156,12 +160,20 @@ window.requestAnimFrame = (function() {
 
 		var moveParallax = function() {
 			$.each(parallaxes, function(i, parallax) {
-				if (parallax.element.is(':in-viewport')) {
+				var scrollPosition = parallax.scrollPosition;
+				if(scrollPosition == 'background-position') {
+					if (parallax.element.is(':in-viewport')) {
+						parallax.element.css({
+							'background-position' : newPos(parallax.left, parallax.adjuster, parallax.inertia, pos)
+						});
+					}
+						
+				} else {
 					parallax.element.css({
-						'background-position' : newPos(parallax.left, parallax.adjuster, parallax.inertia, pos)
+						'top' : newTop(parallax.adjuster, parallax.inertia, pos)
 					});
 				}
-			});
+			}); 
 		};
 
 		var pos, ticking = false;
@@ -196,7 +208,7 @@ window.requestAnimFrame = (function() {
 				}
 
 				var data = {
-					'scroll-prop' : 'background-position',
+					'scrollPosition' : 'background-position',
 					'inertia' : inertia,
 					'adjuster' : $elem.offset().top * inertia + bgTop,
 					'element' : $elem,
@@ -205,9 +217,19 @@ window.requestAnimFrame = (function() {
 				result.push(data);
 			});
 			$("[data-parallax-inertia]").each(function(i, elem) {
+				var $elem = $(elem);
+				var inertia = parseFloat( $elem.attr('data-parallax-inertia'));
+				var parentOffset = $(this).closest('[data-parallax-offset="true"]');
+				var adjuster = $elem.attr('data-parallax-offset-top') == undefined ? 0 : parseFloat($elem.attr('data-parallax-offset-top'));
+				if(parentOffset.size() > 0) {
+					adjuster += parentOffset.offset().top;
+				}
+				
 				var data = {
-					'scroll-prop' : 'top',
-					inertia : $(elem).attr('data-parallax-background-inertia')
+					'scrollPosition' : 'top',
+					'inertia' : inertia,
+					'element' : $elem,
+					'adjuster': adjuster
 				};
 				result.push(data);
 			});

@@ -192,19 +192,23 @@
 .MobilePart3 .imgDiv{padding-top:57px; height:400px; overflow:hidden;}
 .MobilePart3 .btn{display:block; background:url(../image/btn.png) left top no-repeat; width:180px; height:320px; overflow:hidden; position:absolute; z-index:1; left:12px; top:57px; display:none;}
 
-.MobilePart4{height:500px; overflow:hidden; background:#5f5962;}
+.MobilePart4{height:500px; overflow:hidden; background:#5f5962; position: relative;}
 .MobilePart4 .wal{height:500px; width:980px; position:relative;}
-.MobilePart4 .title{line-height:150px; height:150px; overflow:hidden; color:#FFF; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:162px; right:175px;}
-.MobilePart4 .imgDiv{position:absolute; z-index:2; top:162px; right:0px;}
-.MobilePart4 .bg{position:absolute; z-index:1; top:77px; right:50px;}
+.MobilePart4 .title{line-height:150px; height:150px; overflow:hidden; color:#FFF; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:162px; right:2175px; transition: all 1s;}
+.MobilePart4.in-viewport .title{right: 175px;}
+.MobilePart4 .imgDiv{position:absolute; z-index:2; top:162px; right:-1000px; transition: all 1s;}
+.MobilePart4.in-viewport .imgDiv{right: 0px;}
+.MobilePart4 .bg{position:absolute;}
 .MobilePart4 li{height:122px; width:305px; overflow:hidden; position:relative; top:90px; left:55px; padding-left:88px; color:#FFF; line-height:1.6em;}
 .MobilePart4 li .ico{position:absolute; left:0px; top:0px;}
 .MobilePart4 li h1{padding:15px 0 5px 0;}
 
-.MobilePart5{height:490px; overflow:hidden; background:#eee; color:#333;}
+.MobilePart5{height:490px; overflow:hidden; background:#eee; color:#333;position: relative;}
 .MobilePart5 .wal{height:490px; width:980px; position:relative;}
-.MobilePart5 .title{line-height:150px; height:150px; overflow:hidden; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:162px; left:185px;}
-.MobilePart5 .imgDiv{position:absolute; z-index:2; top:162px; left:0px;}
+.MobilePart5 .title{line-height:150px; height:150px; overflow:hidden; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:162px; left:2185px; transition: all 1s;}
+.MobilePart5.in-viewport .title {left: 185px;}
+.MobilePart5 .imgDiv{position:absolute; z-index:2; top:162px; left:-1000px; transition: all 1s;}
+.MobilePart5.in-viewport .imgDiv{left: 0px;}
 .MobilePart5 .bg{position:absolute; z-index:1; top:0px; left:0px;}
 .MobilePart5 .list{padding-left:550px;}
 .MobilePart5 li{height:122px; overflow:hidden; position:relative; top:90px; left:55px; padding-left:88px; color:#666; line-height:1.6em;}
@@ -278,8 +282,8 @@
 .webPart3 li .ico{position:absolute; left:0px; top:0px;}
 .webPart3 li h1{padding:15px 0 10px 0; color:#333;}
 /**/
-.QMpart3 .title{right:182px;}
-.QMpart3 .imgDiv{right:0px;}
+.QMpart3.in-viewport .title{right:182px;}
+.QMpart3.in-viewport .imgDiv{right:0px;}
 .QMpart3 .list{left:50px;}
 
 .newShow{padding:60px 0; color:#333;}

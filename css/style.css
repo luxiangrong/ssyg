@@ -552,6 +552,10 @@ footer {
 	max-width: 125px;
 }
 
+.qr-box img {
+	margin: 0 auto;
+}
+
 .qr-box h6 {
 	color: #c0c0c0;
 }
