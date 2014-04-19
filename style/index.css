@@ -44,9 +44,9 @@
 .activity .centerDiv .rightBtn:hover{background:url(../image/rightBtn2Hover.png) center no-repeat;}
 
 .aboutPart1{background:#e4e5e7 url(../image/aboutPart1.jpg) center top no-repeat; position:relative; height:880px; overflow:hidden;}
-.aboutPart1 .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:50%; margin-left:-625px; top:380px;}
+.aboutPart1 .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:50%; margin-left:-580px; top:380px;}
 .aboutPart1 .leftBtn:hover{background:url(../image/leftBtn3Hover.png) left top no-repeat;}
-.aboutPart1 .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:50%; margin-right:-625px; top:380px;}
+.aboutPart1 .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:50%; margin-right:-580px; top:380px;}
 .aboutPart1 .rightBtn:hover{background:url(../image/rightBtn3Hover.png) left top no-repeat;}
 .aboutPart1 .list{width:1000px; overflow:hidden; position:relative; margin:0 auto; top:160px;}
 .aboutPart1 li{float:left; width:250px; height:317px; overflow:hidden; position:relative; background:url(../image/bg1.png) center 200px no-repeat; text-align:center; font-size:14px;}
@@ -182,9 +182,9 @@
 
 .MobilePart3{height:609px; overflow:hidden; background:#e4e5e7; position:relative;}
 .MobilePart3 .title{line-height:82px; overflow:hidden; color:#333; font-size:16px; margin-left:-625px; position:absolute; left:50%; top:0px;}
-.MobilePart3 .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:50%; margin-left:-655px; top:258px;}
+.MobilePart3 .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:50%; margin-left:-600px; top:258px;}
 .MobilePart3 .leftBtn:hover{background:url(../image/leftBtn3Hover.png) left top no-repeat;}
-.MobilePart3 .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:50%; margin-right:-655px; top:258px;}
+.MobilePart3 .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:50%; margin-right:-600px; top:258px;}
 .MobilePart3 .rightBtn:hover{background:url(../image/rightBtn3Hover.png) left top no-repeat;}
 .MobilePart3 .list{width:980px; padding-top:82px; overflow:hidden; position:relative; margin:0 auto;}
 .MobilePart3 ul{width:2000%;}
@@ -219,13 +219,13 @@
 .casePart1 ul{width:2000%;}
 .casePart1 li{float:left; width:280px; overflow:hidden; text-align:center;}
 .casePart1 a{display:block; background:url(../image/caseBg1.png) left top no-repeat; width:170px; height:231px; overflow:hidden; text-align:center; font-size:16px; color:#6F6F6F; letter-spacing:-1px;}
-.casePart1 a h1{font-size:55px; height:72px; padding-top:40px; overflow:hidden; letter-spacing:-3px;}
+.casePart1 a h1{font-size:55px;  padding-top:40px; overflow:hidden; letter-spacing:-3px;}
 .casePart1 a:hover{background:url(../image/caseBg2.png) left top no-repeat; color:#FFF;}
 
-.case{min-height:1070px; _height:1070px; position:relative;}
-.case .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:22px; top:450px;}
+.case{_height:655px; position:relative; margin-top: 80px;}
+.case .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:fixed; z-index:10; left:22px; top:50%; margin-top: -40px;}
 .case .leftBtn:hover{background:url(../image/leftBtn3Hover.png) left top no-repeat;}
-.case .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:22px; top:450px;}
+.case .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:fixed; z-index:10; right:22px; top:50%;margin-top: -40px;}
 .case .rightBtn:hover{background:url(../image/rightBtn3Hover.png) left top no-repeat;}
 .case .list{width:1222px; overflow:hidden; position:relative; margin:0 auto;}
 .case ul{width:2000%;}

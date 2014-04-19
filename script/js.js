@@ -84,7 +84,7 @@ $(function() {
 		imgScrollLeft2($('.MobilePart3').find('.list'), $('.MobilePart3').find('li').length - 4, 259, 0);
 	});
 	//--案例(复杂特效)
-	$('.case').find('ul').width($('.case').find('li').length / 3 * 415);
+	$('.case').find('ul').width( Math.ceil($('.case').find('li').length / 2) * 415);
 	$('.case').find('li').hover(function() {
 		$(this).find('.contentDiv').fadeIn(500);
 	}, function() {
