@@ -84,7 +84,7 @@ $(function() {
 		imgScrollLeft2($('.MobilePart3').find('.list'), $('.MobilePart3').find('li').length - 4, 259, 0);
 	});
 	//--案例(复杂特效)
-	$('.case').find('ul').width( Math.ceil($('.case').find('li').length / 2) * 415);
+	$('.case').find('ul').width(Math.ceil($('.case').find('li').length / 2) * 415);
 	$('.case').find('li').hover(function() {
 		$(this).find('.contentDiv').fadeIn(500);
 	}, function() {
@@ -128,6 +128,38 @@ $(function() {
 			scrollTop : 0
 		}, 500);
 	});
-	//
 	
+	//大事记效果
+	var inViewPercent = $(window).width() / $('.aboutPart4 .list').width();
+	$(".list2 .currentCursor").width(inViewPercent * 1100);
+	
+	
+	$(".list2 .currentCursor").mousedown(function(e){
+		var $this = $(this);
+		$this.data('mousedown', true);
+		$this.data('lastX', e.pageX);
+	});
+	$('body').mouseup(function(){
+		$(".list2 .currentCursor").data('mousedown', false);
+	});
+	$('body').mousemove(function(e){
+		var $this = $(".list2 .currentCursor");
+		if($this.data('mousedown') == true) {
+			var minLeft = 0;
+			var maxLeft = $(".list2").width() - $this.width() - 1;
+			var currentX = e.pageX;
+			var lastX = $this.data('lastX');
+			
+			var offsetX = currentX - lastX;
+			var newLeft = $this.position().left + offsetX;
+			newLeft = newLeft < minLeft ? minLeft : newLeft;
+			newLeft = newLeft > maxLeft ? maxLeft : newLeft;
+			$this.css('left', newLeft);
+			$this.find('ul').css('left', -newLeft);
+			$this.data('lastX', e.pageX);
+			$('.aboutPart4 .list').css('left', ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft) );
+		}
+	});
+	
+
 });
