@@ -2,41 +2,6 @@ jQuery.noConflict();
 (function($) {
 	$(function() {
 		$(document).ready(function() {
-			//chrome浏览器滚轮平滑滚动
-			if (!$.browser.mozilla) {
-				var scrollStep = 100;
-				var bottomWheelNum = 0;
-				var topWheelNum = 0;
-				$(window).scrollable().mousewheel(function(event, delta, deltaX, deltaY) {
-					event.preventDefault();
-					var firstScrollTop = $(this).scrollTop();
-					var currentScrollTop = $('body').data('scrollTop')?$('body').data('scrollTop'):0;
-					if (delta > 0) {
-						if(bottomWheelNum > 0) {
-							$('body').data('scrollTop', $(this).scrollTop());
-							bottomWheelNum = 0;
-						}
-						topWheelNum ++;
-						var scrollTo = currentScrollTop - scrollStep * topWheelNum < 0 ? 0 : currentScrollTop - scrollStep * topWheelNum;
-						$.scrollTo(scrollTo, 500, function(){topWheelNum = 0;$('body').data('scrollTop', scrollTo);});
-					} else if (delta < 0) {
-						if(topWheelNum > 0) {
-							$('body').data('scrollTop', $(this).scrollTop());
-							topWheelNum = 0;
-						}
-						bottomWheelNum ++ ;
-						var scrollTo = currentScrollTop + scrollStep * bottomWheelNum < $(document).height() - $(window).height() ? currentScrollTop + scrollStep * bottomWheelNum : $(document).height() - $(window).height();
-						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
-					}
-				});
-			}
-			
-    		$("body").queryLoader2({
-		    	backgroundColor: '#FFFFFF',
-		    	barColor: '#CC0000',
-		    	barHeight: 3
-		    });
-			
 			$(window).bind('scroll', function() {
 				pos = $(window).scrollTop();
 				if(pos > $(window).height()) {
@@ -96,7 +61,7 @@ jQuery.noConflict();
 					}
 				});
 				return result;
-			}
+			};
 			$(window).on('scroll.events', function(){
 				var start = $('#screen-1').height() + $("#screen-3").height() + 500;
 				var $this = $(this);
@@ -257,23 +222,179 @@ jQuery.noConflict();
 				// },
 			// };
 			
-			var screen1Height = $("#screen-1").height();
-			var screen3Height = $("#screen-3").height();
-			var screen4Height = $("#screen-4").height() ;
-			var screen5Height = $("#events").height();
-			var screen6Height = $("#screen-6").height();
-			var screen7Height = $("#screen-7").height();
-			
-			$("#screen-3").attr("data-stellar-vertical-offset", -screen1Height);
-			$("#screen-4").attr("data-stellar-vertical-offset", -screen1Height - screen3Height);
-			$("#events").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height);
-			$("#screen-6").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height - screen5Height );
-			$("#screen-7").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height - screen5Height - screen6Height);
-			$("body").height(screen1Height + screen3Height + screen4Height + screen5Height + screen6Height + screen7Height);
-			$.stellar({
-				horizontalScrolling : false, //默认水平方向开启滚动
-				hideDistantElements : false, //默认为隐藏
-			});
+			// var screen1Height = $("#screen-1").height();
+			// var screen3Height = $("#screen-3").height();
+			// var screen4Height = $("#screen-4").height() ;
+			// var screen5Height = $("#events").height();
+			// var screen6Height = $("#screen-6").height();
+			// var screen7Height = $("#screen-7").height();
+// 			
+			// $("#screen-3").attr("data-stellar-vertical-offset", -screen1Height);
+			// $("#screen-4").attr("data-stellar-vertical-offset", -screen1Height - screen3Height);
+			// $("#events").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height);
+			// $("#screen-6").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height - screen5Height );
+			// $("#screen-7").attr("data-stellar-vertical-offset", -screen1Height - screen3Height - screen4Height - screen5Height - screen6Height);
+			// $("body").height(screen1Height + screen3Height + screen4Height + screen5Height + screen6Height + screen7Height);
+			// $.stellar({
+				// horizontalScrolling : false, //默认水平方向开启滚动
+				// hideDistantElements : false, //默认为隐藏
+			// });
 		});
+	});
+	
+	$(function() {
+		//计算出视差滚动元素的坐标
+		var newPos = function(x, adjuster, inertia, pos) {
+			return x + " " + (adjuster - pos * inertia) + "px";
+		};
+
+		var newTop = function(adjuster, inertia, pos) {
+			return (adjuster - pos * inertia) + "px";
+		};
+
+		//将background-position的css值转换成数值数组
+		function bgPosToArray(strg) {
+			strg = strg.replace(/left|top/g, '0px');
+			strg = strg.replace(/right|bottom/g, '100%');
+			strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g, "$1px$2");
+			var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+			return [parseFloat(res[1], 10), res[2], parseFloat(res[3], 10), res[4]];
+		}
+
+		var moveParallax = function() {
+			$.each(parallaxes, function(i, parallax) {
+				var scrollPosition = parallax.scrollPosition;
+				if (scrollPosition == 'background-position') {
+					if (parallax.element.is(':in-viewport')) {
+						parallax.element.css({
+							'background-position' : newPos(parallax.left, parallax.adjuster, parallax.inertia, pos)
+						});
+					}
+
+				} else {
+					parallax.element.css({
+						'top' : newTop(parallax.adjuster, parallax.inertia, pos)
+					});
+				}
+			});
+		};
+
+		var pos, ticking = false;
+		var parallaxes;
+		var rafUpdate = function() {
+			ticking = false;
+			moveParallax();
+		};
+
+		var requestTick = function() {
+			if (!ticking) {
+				window.requestAnimFrame(rafUpdate);
+			}
+			ticking = true;
+		};
+
+		var findParallaxes = function() {
+			var result = new Array();
+			$("[data-parallax-background-inertia]").each(function(i, elem) {
+				var $elem = $(elem);
+				var inertia = $elem.attr('data-parallax-background-inertia');
+				var bgTop = $elem.attr('data-parallax-offset-top') == undefined ? 0 : parseFloat($elem.attr('data-parallax-offset-top'));
+				supportsBackgroundPositionXY = $('<div />', {
+					style : 'background:#fff'
+				}).css('background-position-x') !== undefined;
+
+				if (supportsBackgroundPositionXY) {
+					left = $elem.css('background-position-x');
+				} else {
+					var bgPos = bgPosToArray($elem.css('background-position'));
+					left = bgPos[0] + '' + bgPos[1];
+				}
+
+				var data = {
+					'scrollPosition' : 'background-position',
+					'inertia' : inertia,
+					'adjuster' : $elem.offset().top * inertia + bgTop,
+					'element' : $elem,
+					'left' : left
+				};
+				result.push(data);
+			});
+			$("[data-parallax-inertia]").each(function(i, elem) {
+				var $elem = $(elem);
+				var inertia = parseFloat($elem.attr('data-parallax-inertia'));
+				var parentOffset = $(this).closest('[data-parallax-offset="true"]');
+				var adjuster = $elem.attr('data-parallax-offset-top') == undefined ? 0 : parseFloat($elem.attr('data-parallax-offset-top'));
+				if (parentOffset.size() > 0) {
+					adjuster += parentOffset.offset().top;
+				}
+
+				var data = {
+					'scrollPosition' : 'top',
+					'inertia' : inertia,
+					'element' : $elem,
+					'adjuster' : adjuster
+				};
+				result.push(data);
+			});
+			return result;
+
+		};
+
+		$(document).ready(function() {
+			var scrollable = $(window).scrollable();
+			pos = scrollable.scrollTop();
+			parallaxes = findParallaxes();
+			moveParallax();
+			$(window).bind('scroll', function() {
+				pos = scrollable.scrollTop();
+				//如果浏览器支持requestAnimationFrame，使用requestAnimationFrame来更新动画
+				if (window.requestAnimFrame !== null) {
+					requestTick();
+				} else {
+					moveParallax();
+				}
+
+			});
+
+			//chrome浏览器滚轮平滑滚动
+			if ($.browser.webkit) {
+				var scrollStep = 100;
+				var bottomWheelNum = 0;
+				var topWheelNum = 0;
+				$(window).scrollable().mousewheel(function(event, delta, deltaX, deltaY) {
+					event.preventDefault();
+					var firstScrollTop = $(this).scrollTop();
+					var currentScrollTop = $('body').data('scrollTop')?$('body').data('scrollTop'):firstScrollTop;
+					if (delta > 0) {
+						if(bottomWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							bottomWheelNum = 0;
+						}
+						topWheelNum ++;
+						var scrollTo = currentScrollTop - scrollStep * topWheelNum < 0 ? 0 : currentScrollTop - scrollStep * topWheelNum;
+						$.scrollTo(scrollTo, 500, function(){topWheelNum = 0;$('body').data('scrollTop', scrollTo);});
+					} else if (delta < 0) {
+						if(topWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							topWheelNum = 0;
+						}
+						bottomWheelNum ++ ;
+						var scrollTo = currentScrollTop + scrollStep * bottomWheelNum < $(document).height() - $(window).height() ? currentScrollTop + scrollStep * bottomWheelNum : $(document).height() - $(window).height();
+						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
+					}
+				});
+			}
+
+		});
+
+		//加载动画
+		$(document).ready(function () {
+			    $("body").queryLoader2({
+			    	backgroundColor: '#FFFFFF',
+			    	barColor: '#CC0000',
+			    	barHeight: 3
+			    });
+			});
+
 	});
 })(jQuery);

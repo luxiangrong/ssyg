@@ -470,7 +470,7 @@ window.requestAnimFrame = (function() {
 			});
 
 			//chrome浏览器滚轮平滑滚动
-			if (!$.browser.mozilla) {
+			if ($.browser.webkit) {
 				var scrollStep = 100;
 				var bottomWheelNum = 0;
 				var topWheelNum = 0;
