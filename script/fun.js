@@ -446,6 +446,11 @@ window.requestAnimFrame = (function() {
 			moveParallax();
 			$(window).bind('scroll', function() {
 				pos = $(window).scrollTop();
+				if(pos > $(window).height()) {
+					$(".topA").fadeIn(500);
+				} else {
+					$(".topA").fadeOut(500);
+				}
 				//如果浏览器支持requestAnimationFrame，使用requestAnimationFrame来更新动画
 				if (window.requestAnimFrame !== null) {
 					requestTick();

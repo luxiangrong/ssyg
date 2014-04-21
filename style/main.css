@@ -47,5 +47,5 @@ a, .aboutPart2 li{
 .footDiv .msg img{position:relative; top:6px;}
 .footDiv a{color:#c0c0c0;}
 
-.topA{display:block; width:36px; height:33px; overflow:hidden; background:url(../image/topA.gif) left top no-repeat; position:fixed; z-index:100; right:10px; bottom:10px;}
-.topA:hover{background:url(../image/topA.gif) left bottom no-repeat;}
+.topA{display:none; cursor:pointer; width:48px; height:48px; overflow:hidden; position:fixed; z-index:100; right:10px; bottom:10px; line-height: 48px; background: #b9b9b9; color: #FFF; text-align: center; transition: all 1s;}
+.topA:hover{background: #c20808; color: #FFF;}
