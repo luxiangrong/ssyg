@@ -471,26 +471,43 @@ window.requestAnimFrame = (function() {
 
 			//chrome浏览器滚轮平滑滚动
 			if (!$.browser.mozilla) {
-				var scrollStep = 150;
+				var scrollStep = 100;
 				var bottomWheelNum = 0;
 				var topWheelNum = 0;
 				$(window).scrollable().mousewheel(function(event, delta, deltaX, deltaY) {
 					event.preventDefault();
-					var currentScrollTop = $(this).scrollTop();
+					var firstScrollTop = $(this).scrollTop();
+					var currentScrollTop = $('body').data('scrollTop')?$('body').data('scrollTop'):firstScrollTop;
 					if (delta > 0) {
-						bottomWheelNum = 0;
+						if(bottomWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							bottomWheelNum = 0;
+						}
 						topWheelNum ++;
 						var scrollTo = currentScrollTop - scrollStep * topWheelNum < 0 ? 0 : currentScrollTop - scrollStep * topWheelNum;
-						$.scrollTo(scrollTo, 500, function(){topWheelNum = 0;});
+						$.scrollTo(scrollTo, 500, function(){topWheelNum = 0;$('body').data('scrollTop', scrollTo);});
 					} else if (delta < 0) {
-						topWheelNum = 0;
+						if(topWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							topWheelNum = 0;
+						}
 						bottomWheelNum ++ ;
-						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;});
+						var scrollTo = currentScrollTop + scrollStep * bottomWheelNum < $(document).height() - $(window).height() ? currentScrollTop + scrollStep * bottomWheelNum : $(document).height() - $(window).height();
+						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
 					}
 				});
 			}
 
 		});
+
+		//加载动画
+		$(document).ready(function () {
+			    $("body").queryLoader2({
+			    	backgroundColor: '#FFFFFF',
+			    	barColor: '#CC0000',
+			    	barHeight: 3
+			    });
+			});
 
 	});
 })(jQuery);

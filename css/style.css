@@ -1,6 +1,7 @@
 /**
  * normal
  */
+
 body {
 	background-color: #e4e5e7;
 }
@@ -21,9 +22,6 @@ body {
 }
 
 .parallax-view {
-	position: fixed; 
-	left: 0; 
-	right: 0; 
 }
 
 .section-1, .section-2, .section-3, .section-4, .section5 {
@@ -596,4 +594,13 @@ footer {
 
 hr {
 	border-color: #2c2c2c;
+}
+
+/*=============== 加载动画 ===============*/
+#qLoverlay {
+	background: url(../img/logo.png) center center no-repeat ;
+}
+
+#qLoverlay #qLbar {
+	bottom:  0;
 }

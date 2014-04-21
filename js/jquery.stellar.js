@@ -93,28 +93,28 @@
 
 		setBackgroundPosition = (supportsBackgroundPositionXY ?
 			function($elem, x, y) {
-				// $elem.css({
-					// 'background-position-x': x,
-					// 'background-position-y': y
-				// });
-				$elem.animate({
+				$elem.css({
 					'background-position-x': x,
 					'background-position-y': y
-				}, {
-					queue : false,
-					duration : 800,
-					"easing" : "easeOutExpo"
 				});
+				// $elem.animate({
+					// 'background-position-x': x,
+					// 'background-position-y': y
+				// }, {
+					// queue : false,
+					// duration : 800,
+					// "easing" : "easeOutExpo"
+				// });
 			} :
 			function($elem, x, y) {
-				//$elem.css('background-position', x + ' ' + y);
-				$elem.animate({
-					backgroundPosition: "(" + x + " " + y +")"
-				}, {
-					queue : false,
-					duration : 800,
-					"easing" : "easeOutExpo"
-				});
+				$elem.css('background-position', x + ' ' + y);
+				// $elem.animate({
+					// backgroundPosition: "(" + x + " " + y +")"
+				// }, {
+					// queue : false,
+					// duration : 800,
+					// "easing" : "easeOutExpo"
+				// });
 			}
 		),
 

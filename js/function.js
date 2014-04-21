@@ -2,6 +2,41 @@ jQuery.noConflict();
 (function($) {
 	$(function() {
 		$(document).ready(function() {
+			//chrome浏览器滚轮平滑滚动
+			if (!$.browser.mozilla) {
+				var scrollStep = 100;
+				var bottomWheelNum = 0;
+				var topWheelNum = 0;
+				$(window).scrollable().mousewheel(function(event, delta, deltaX, deltaY) {
+					event.preventDefault();
+					var firstScrollTop = $(this).scrollTop();
+					var currentScrollTop = $('body').data('scrollTop')?$('body').data('scrollTop'):0;
+					if (delta > 0) {
+						if(bottomWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							bottomWheelNum = 0;
+						}
+						topWheelNum ++;
+						var scrollTo = currentScrollTop - scrollStep * topWheelNum < 0 ? 0 : currentScrollTop - scrollStep * topWheelNum;
+						$.scrollTo(scrollTo, 500, function(){topWheelNum = 0;$('body').data('scrollTop', scrollTo);});
+					} else if (delta < 0) {
+						if(topWheelNum > 0) {
+							$('body').data('scrollTop', $(this).scrollTop());
+							topWheelNum = 0;
+						}
+						bottomWheelNum ++ ;
+						var scrollTo = currentScrollTop + scrollStep * bottomWheelNum < $(document).height() - $(window).height() ? currentScrollTop + scrollStep * bottomWheelNum : $(document).height() - $(window).height();
+						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
+					}
+				});
+			}
+			
+    		$("body").queryLoader2({
+		    	backgroundColor: '#FFFFFF',
+		    	barColor: '#CC0000',
+		    	barHeight: 3
+		    });
+			
 			$(window).bind('scroll', function() {
 				pos = $(window).scrollTop();
 				if(pos > $(window).height()) {
@@ -206,21 +241,21 @@ jQuery.noConflict();
 			$(window).on("resize", calcCaseContainerHeight);
 
 			//视差滚动效果
-			$.stellar.positionProperty.position = {
-				setTop : function($element, newTop, originalTop) {
-					$element.stop(true).animate({
-						top : newTop
-					}, {
-						queue : false,
-						duration : 1000,
-						"easing" : "easeOutCubic"
-					});
-					//$element.css('top', newTop);
-				},
-				setLeft : function($element, newLeft, originalLeft) {
-					$elem.css('left', left);
-				},
-			};
+			// $.stellar.positionProperty.position = {
+				// setTop : function($element, newTop, originalTop) {
+					// $element.stop(true).animate({
+						// top : newTop
+					// }, {
+						// queue : false,
+						// duration : 1000,
+						// "easing" : "easeOutCubic"
+					// });
+					// //$element.css('top', newTop);
+				// },
+				// setLeft : function($element, newLeft, originalLeft) {
+					// $elem.css('left', left);
+				// },
+			// };
 			
 			var screen1Height = $("#screen-1").height();
 			var screen3Height = $("#screen-3").height();
