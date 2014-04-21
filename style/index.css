@@ -138,11 +138,27 @@
 
 .aboutPart4{height:613px; width:100%; overflow:hidden; position:relative; background:#5f5962 url(../moo/skin/indexPart4.png) center no-repeat;}
 .aboutPart4 .list{height:540px; position:relative; overflow:hidden; background:url(../image/indexPart4Bg.png) left center repeat-x;}
-.aboutPart4 .list li{float:left; width:150px; overflow:hidden; height:540px;}
+.aboutPart4 .list li{float:left; width:150px; overflow:visible; height:540px; position: relative; }
 .aboutPart4 .list .li_01 a{display:block; background:url(../image/indexPart4Bg1.png) left top no-repeat; width:108px; height:108px; overflow:hidden; margin:0 auto; position:relative; top:170px; font-size:16px; color:#555; text-align:center; padding-top:30px;}
 .aboutPart4 .list .li_01_1 a{top:260px;}
 .aboutPart4 .list .li_02 a{display:block; background:url(../image/indexPart4Bg2.png) center no-repeat; width:108px; height:108px; overflow:hidden; margin:0 auto; position:relative; top:253px;}
 .aboutPart4 .list .li_02_1 a{top:178px;}
+.aboutPart4 .list .li_01 p {
+	background: url("../image/indexPart4Bg4.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    height: 87px;
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    width: 246px;
+    z-index: 10;
+    left: 50px;
+    padding: 5px 20px;
+    line-height: 1.2em;
+    color: #5F5962;
+}
+.aboutPart4 .list .li_01_1 p {
+	top: 130px;
+}
 /**/
 .aboutPart4 .list1 li{position:absolute; z-index:10; top:50px; background:url(../image/indexPart4Bg4.png) left top no-repeat; width:246px; height:87px; overflow:hidden;}
 .aboutPart4 .list1 p{color:#5F5962; padding:8px 0 0 22px; line-height: 1.2em;}
@@ -150,6 +166,26 @@
 .aboutPart4 .list1 .li_02 p{padding-top:30px;}
 .aboutPart4 .list1 .li_03{top:140px;}
 .aboutPart4 .list1 .li_04{top:270px;}
+
+.aboutPart4 .list .li_02 p {
+	background: url("../image/indexPart4Bg5.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    height: 87px;
+    overflow: hidden;
+    position: absolute;
+    top: 360px;
+    width: 246px;
+    z-index: 10;
+    left: 43px;
+    padding: 28px 20px 0;
+    line-height: 1.2em;
+    color: #5F5962;
+}
+
+.aboutPart4 .list .li_02_1 p {
+	top: 270px;
+}
+
+
 /**/
 .aboutPart4 .list2{
 	-moz-user-select:none;
@@ -215,6 +251,7 @@
 .MobilePart3 .list{width:980px; padding-top:82px; overflow:hidden; position:relative; margin:0 auto;}
 .MobilePart3 ul{width:2000%;}
 .MobilePart3 li{float:left; width:205px; margin-right:54px; height:525px; overflow:hidden; position:relative; background:url(../image/bg2.png) left top no-repeat; text-align:center; font-size:14px;}
+.MobilePart3 li .name {margin-top: 50px;}
 .MobilePart3 .imgDiv{padding-top:57px; height:400px; overflow:hidden;}
 .MobilePart3 .btn{display:block; background:url(../image/btn.png) left top no-repeat; width:180px; height:320px; overflow:hidden; position:absolute; z-index:1; left:12px; top:57px; display:none;}
 
@@ -248,7 +285,7 @@
 .casePart1 a h1{font-size:55px;  padding-top:40px; overflow:hidden; letter-spacing:-3px;}
 .casePart1 a:hover{background:url(../image/caseBg2.png) left top no-repeat; color:#FFF;}
 
-.case{_height:655px; position:relative; margin-top: 80px;}
+.case{_height:655px; position:relative; margin-top: 20px;}
 .case .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:fixed; z-index:10; left:22px; top:50%; margin-top: -40px;}
 .case .leftBtn:hover{background:url(../image/leftBtn3Hover.png) left top no-repeat;}
 .case .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:fixed; z-index:10; right:22px; top:50%;margin-top: -40px;}

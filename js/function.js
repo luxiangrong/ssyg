@@ -2,6 +2,21 @@ jQuery.noConflict();
 (function($) {
 	$(function() {
 		$(document).ready(function() {
+			$(window).bind('scroll', function() {
+				pos = $(window).scrollTop();
+				if(pos > $(window).height()) {
+					$(".topA").fadeIn(500);
+				} else {
+					$(".topA").fadeOut(500);
+				}
+			});
+			
+			$('.topA').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 500);
+			});
+			
 			//大事记内容和效果
 			var eventsMap = [
 				{

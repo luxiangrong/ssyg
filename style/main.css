@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 html {overflow-y: scroll}
-body{margin:0px; padding:0px; font-family:"微软雅黑"; color:#888; overflow-x:hidden;}
+body{margin:0px; padding:0px; font-family:"微软雅黑"; color:#888; overflow-x:hidden;padding-top: 50px;}
 a{color:#707070; text-decoration:none; outline:none;}
 a:active{star:expression(this.onFocus=this.blur());} 
 img{border:0px;}
@@ -47,5 +47,5 @@ a, .aboutPart2 li{
 .footDiv .msg img{position:relative; top:6px;}
 .footDiv a{color:#c0c0c0;}
 
-.topA{display:none; cursor:pointer; width:48px; height:48px; overflow:hidden; position:fixed; z-index:100; right:10px; bottom:10px; line-height: 48px; background: #b9b9b9; color: #FFF; text-align: center; transition: all 1s;}
-.topA:hover{background: #c20808; color: #FFF;}
+.topA{display:none; opacity:0.6; filter:Alpha(opacity=60);cursor:pointer; width:48px; height:48px; overflow:hidden; position:fixed; z-index:100; right:10px; bottom:10px; line-height: 48px; background: #b9b9b9; color: #FFF; text-align: center; transition: all 1s;}
+.topA:hover{background: #c20808; color: #FFF; opacity:1}

@@ -521,6 +521,10 @@ footer {
 	padding-right: 0;
 }
 
+.site-map a {
+	transition: all 0.5s;
+}
+
 .site-map .list-group-item {
 	background-color: transparent;
 	border: 0px solid #FFF;
@@ -529,9 +533,14 @@ footer {
 	line-height: 35px;
 }
 
-.site-map .list-group-item.title {
+.site-map .list-group-item.title, .site-map .list-group-item.title a {
 	color: #C0C0C0;
 	font-weight: bold;
+	text-decoration: none;
+}
+
+.site-map .list-group-item.title a:hover {
+	color: #ff1100;
 }
 
 .site-map a.active, .site-map a:hover, .site-map a:focus, .site-map a:active, .site-map a.list-group-item.active {
@@ -562,4 +571,29 @@ footer {
 
 .copyright {
 	text-align: center;
+}
+
+.topA{
+	display:none; 
+	cursor:pointer; 
+	width:48px; 
+	height:48px; 
+	overflow:hidden; 
+	position:fixed; 
+	z-index:100; 
+	right:10px; 
+	bottom:10px; 
+	line-height: 48px; 
+	background: #b9b9b9; 
+	color: #FFF; 
+	text-align: center; 
+	transition: all 1s;
+}
+.topA:hover{
+	background: #c20808; 
+	color: #FFF;
+}
+
+hr {
+	border-color: #2c2c2c;
 }
