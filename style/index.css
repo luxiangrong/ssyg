@@ -245,7 +245,7 @@
 .MobilePart2 img{position:absolute; right:0px; top:20px;}
 
 .MobilePart3{height:609px; overflow:hidden; background:#e4e5e7; position:relative;}
-.MobilePart3 .title{line-height:82px; overflow:hidden; color:#333; font-size:16px; margin-left:-625px; position:absolute; left:50%; top:0px;}
+.MobilePart3 .title{line-height:82px; overflow:hidden; color:#333; font-size:16px; margin-left:-480px; position:absolute; left:50%; top:0px;}
 .MobilePart3 .leftBtn{display:block; background:url(../image/leftBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; left:50%; margin-left:-600px; top:258px;}
 .MobilePart3 .leftBtn:hover{background:url(../image/leftBtn3Hover.png) left top no-repeat;}
 .MobilePart3 .rightBtn{display:block; background:url(../image/rightBtn3.png) left top no-repeat; width:80px; height:80px; overflow:hidden; position:absolute; z-index:10; right:50%; margin-right:-600px; top:258px;}

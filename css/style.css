@@ -598,7 +598,7 @@ hr {
 
 /*=============== 加载动画 ===============*/
 #qLoverlay {
-	background: url(../img/logo.png) center center no-repeat ;
+	background: url(../img/loading.gif) center center no-repeat ;
 }
 
 #qLoverlay #qLbar {

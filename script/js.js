@@ -122,6 +122,43 @@ $(function() {
 			}, 500);
 		});
 	});
+	
+	$('.site-map a').click(function(){
+		var href = $(this).attr('href');
+		console.log(href.indexOf('#'));
+		var hash = href.substr(href.indexOf('#') + 1);
+		console.log(hash);
+		scrollToHash(hash);
+	});
+	
+	function scrollToHash(hash){
+		var hashMap = {
+			'siteplanning': 0,
+			'interaction': 1,
+			'sitedesign' : 2,
+			'sitedevelop' : 3,
+			'wap': 1,
+			'app': 2,
+			'weixin': 0,
+			'optimization': 0,
+			'maintain': 1,
+			'marketing': 2,
+			'analysis': 3,
+			'team': 0,
+			'activity': 1,
+			'news': 2,
+			'introduction': 3
+		};
+		
+		if(hashMap[hash] !== undefined ) {
+			$('body,html').animate({
+				scrollTop : $('.partDiv').eq(hashMap[hash]).offset().top - 50
+			}, 500);
+		}
+	}
+	var hash = window.location.hash;
+	hash = hash.substr(1);
+	scrollToHash(hash);
 	//--
 	$('.topA').click(function() {
 		$('body,html').animate({
@@ -131,28 +168,53 @@ $(function() {
 
 	//大事记效果
 	$('.aboutPart4').mousewheel(function(event, delta, deltaX, deltaY) {
-		
-		
-		
 		if(delta > 0) {
-			var offsetX = -20;
+			var offsetX = -50;
 		} else {
-			var offsetX = 20;
+			var offsetX = 50;
 		}
+		
+		
 		
 		var $this = $(".list2 .currentCursor");
 		var minLeft = 0;
-		var maxLeft = $(".list2").width() - $this.width() - 2;
+		var maxLeft = $(".list2").width() - $this.width() - 1;
 		var newLeft = $this.position().left + offsetX;
 		newLeft = newLeft < minLeft ? minLeft : newLeft;
 		newLeft = newLeft > maxLeft ? maxLeft : newLeft;
-		$this.css('left', newLeft);
-		$this.find('ul').css('left', -newLeft);
-		$('.aboutPart4 .list').css('left', ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft));
+		$this.animate({
+			left: newLeft
+		},{
+			queue : false,
+			duration : 500,
+		});
+		//$this.css('left', newLeft);
+		
+		$this.find('ul').animate({
+			left: -newLeft
+		},{
+			queue : false,
+			duration : 500,
+		});
+		//$this.find('ul').css('left', -newLeft);
+		
+		$('.aboutPart4 .list').animate({
+			left: ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft)
+		},{
+			queue : false,
+			duration : 500,
+		});
+		//$('.aboutPart4 .list').css('left', ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft));
+		
 		
 		if( newLeft < maxLeft && newLeft > minLeft) {
 			event.stopPropagation();
 			event.preventDefault();
+		} 
+		
+		if( newLeft <= maxLeft && newLeft >= minLeft) {
+			$.scrollTo($(".aboutPart4").offset().top - 50, 500);
+			$('body').data('scrollTop', $(".aboutPart4").offset().top - 50);
 		}
 		
 		
@@ -172,7 +234,7 @@ $(function() {
 	$('body').mousemove(function(e) {
 		var $this = $(".list2 .currentCursor");
 		var minLeft = 0;
-		var maxLeft = $(".list2").width() - $this.width() - 2;
+		var maxLeft = $(".list2").width() - $this.width() - 1;
 		var currentX = e.pageX;
 		var lastX = $this.data('lastX');
 		if ($this.data('mousedown') == true) {

@@ -77,18 +77,22 @@ jQuery.noConflict();
 						duration : 1000,
 						"easing" : "easeOutCubic"
 					});
+					//$eventsTag.css('top', 550 - height);
 				}
 				if(currentScrollTop > start && currentScrollTop < start + 1648) {
 					$eventsTag.show();
 					$eventsTag.fadeIn(500);
 					
-					$events.find('.mask').animate({
-						height : height
-					}, {
-						queue : false,
-						duration : 500,
-						"easing" : "easeOutCubic"
-					});
+					// $events.find('.mask').animate({
+						// height : height
+					// }, {
+						// queue : false,
+						// duration : 500,
+						// "easing" : "easeOutCubic"
+					// });
+					
+					$events.find('.mask').height(height);
+					
 					var eventObj = getEventByHeight(height);
 					if(eventObj) {
 						$events.find('.events-tag dt').html(eventObj.year);
@@ -96,23 +100,25 @@ jQuery.noConflict();
 					}
 				} else {
 					if(currentScrollTop < start) {
+						// $events.find('.mask').height(0);
+							// $events.find('.mask').animate({
+							// height : 0
+						// }, {
+							// queue : false,
+							// duration : 500,
+							// "easing" : "easeOutCubic"
+						// });
 						$events.find('.mask').height(0);
-							$events.find('.mask').animate({
-							height : 0
-						}, {
-							queue : false,
-							duration : 500,
-							"easing" : "easeOutCubic"
-						});
 					}
 					if(currentScrollTop > start + 1648) {
-						$events.find('.mask').animate({
-							height : 1648
-						}, {
-							queue : false,
-							duration : 500,
-							"easing" : "easeOutCubic"
-						});
+						// $events.find('.mask').animate({
+							// height : 1648
+						// }, {
+							// queue : false,
+							// duration : 500,
+							// "easing" : "easeOutCubic"
+						// });
+						$events.find('.mask').height(1648);
 					}
 					$eventsTag.fadeOut(500);
 				}
@@ -357,7 +363,7 @@ jQuery.noConflict();
 			});
 
 			//chrome浏览器滚轮平滑滚动
-			if ($.browser.webkit) {
+			if ($.browser.webkit || $.browser.msie) {
 				var scrollStep = 100;
 				var bottomWheelNum = 0;
 				var topWheelNum = 0;
