@@ -21,33 +21,27 @@ jQuery.noConflict();
 			var eventsMap = [
 				{
 					top: 35,
-					year: "2014",
-					content: "2014 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2014'
 				},
 				 {
 					top: 425,
-					year: "2013",
-					content: "2013 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2013'
 				},	
 				 {
 					top: 745,
-					year: "2012",
-					content: "2012 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2012'
 				},	
 				{
 					top: 1060,
-					year: "2011",
-					content: "2011 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2011'
 				},
 				{
 					top: 1260,
-					year: "2010",
-					content: "2010 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2010'
 				},		
 				{
 					top: 1465,
-					year: "2009",
-					content: "2009 国际野生生物保护学会(WCS)中国委托公司网站开发事宜"
+					id: 'year-2009'
 				},	
 			];
 			
@@ -55,7 +49,10 @@ jQuery.noConflict();
 				var result ;
 				$.each(eventsMap, function(index, data){
 					if(height > data.top) {
-						result = data;
+						result = {
+							year: $("a#" + data.id).find('.year').html(),
+							content: $("a#" + data.id).find('.content').html()
+						};
 					} else {
 						return false;
 					}

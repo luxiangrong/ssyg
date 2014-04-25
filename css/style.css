@@ -409,6 +409,10 @@ body {
 	text-decoration: none;
 }
 
+#events .events-points .content{
+	display: none;	
+}
+
 #events .events-tag {
 	display: none;
 	position: fixed;
