@@ -17,10 +17,30 @@ $(function() {
 	});
 	//--关于我们公司动态（复杂特效）
 	$('.aboutPart2Btn').find('.rightBtn').click(function() {
-		$('.aboutPart2').load("aboutPart2.html");
+		var currentPage = $('.aboutPart2').data('current') == undefined ? 0 : $('.aboutPart2').data('current');
+		var activities = $('.aboutPart2').data('activities');
+		if(!activities) {
+			return;
+		}
+		currentPage = parseInt(currentPage);
+		currentPage ++;
+		currentPage = (currentPage + activities.length) % activities.length;
+		$('.aboutPart2').load(activities[currentPage]);
+		$('.aboutPart2').data('current', currentPage);
+		
 	});
 	$('.aboutPart2Btn').find('.leftBtn').click(function() {
-		$('.aboutPart2').load("aboutPart2.html");
+		var currentPage = $('.aboutPart2').data('current') == undefined ? 0 : $('.aboutPart2').data('current');
+		var activities = $('.aboutPart2').data('activities');
+		if(!activities) {
+			return;
+		}
+		currentPage = parseInt(currentPage);
+		currentPage --;
+		currentPage = (currentPage + activities.length) % activities.length;
+		
+		$('.aboutPart2').load(activities[currentPage]);
+		$('.aboutPart2').data('current', currentPage);
 	});
 	//--关于我们公司活动（复杂特效）
 	//--关于我们发展历程（复杂特效）

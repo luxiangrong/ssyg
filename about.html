@@ -226,7 +226,12 @@
 		<div class="aboutPart aboutPart2 partDiv"></div>
 		<script type="text/javascript">
 			$(function() {
-				$('.aboutPart2').load("aboutPart2.html");
+				var activities = [
+					'aboutPart2.html','aboutPart2-1.html'
+				];
+				$('.aboutPart2').data('current', 0);
+				$('.aboutPart2').data('activities', activities);
+				$('.aboutPart2').load(activities[0]);
 			})
 		</script>
 		<div class="aboutPart2Btn">
