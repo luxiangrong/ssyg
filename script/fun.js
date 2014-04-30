@@ -461,7 +461,7 @@ window.requestAnimFrame = (function() {
 				$('.webPart1Div').each(function(i, elem) {
 					var $elem = $(elem);
 					if ($.inviewport($elem, {
-						threshold : -500
+						threshold : -300
 					})) {
 						$elem.addClass('in-viewport');
 					}
