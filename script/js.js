@@ -194,8 +194,6 @@ $(function() {
 			var offsetX = 50;
 		}
 		
-		
-		
 		var $this = $(".list2 .currentCursor");
 		var minLeft = 0;
 		var maxLeft = $(".list2").width() - $this.width() - 1;
@@ -206,7 +204,7 @@ $(function() {
 			left: newLeft
 		},{
 			queue : false,
-			duration : 500,
+			duration : 500
 		});
 		//$this.css('left', newLeft);
 		
@@ -214,7 +212,7 @@ $(function() {
 			left: -newLeft
 		},{
 			queue : false,
-			duration : 500,
+			duration : 500
 		});
 		//$this.find('ul').css('left', -newLeft);
 		
@@ -222,7 +220,7 @@ $(function() {
 			left: ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft)
 		},{
 			queue : false,
-			duration : 500,
+			duration : 500
 		});
 		//$('.aboutPart4 .list').css('left', ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft));
 		

@@ -35,12 +35,12 @@ var myMooFlowPage = {
 		
 		var currentImg=mf.getCurrent(0);
 		$('MooFlow').addEvent('click',function(e){
-					var target=$(e.target);
-					if(currentImg.src==target.get('src')){
-					    window.open(currentImg.alt);
-					};
-					currentImg=mf.getCurrent();
-				});
+			var target=$(e.target);
+			if(currentImg.src==target.get('src')){
+			    window.open(currentImg.alt);
+			};
+			currentImg=mf.getCurrent();
+		});
 		
 	}
 	

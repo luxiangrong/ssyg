@@ -42,7 +42,7 @@ jQuery.noConflict();
 				{
 					top: 1465,
 					id: 'year-2009'
-				},	
+				}	
 			];
 			
 			var getEventByHeight  = function(height){
@@ -60,34 +60,20 @@ jQuery.noConflict();
 				return result;
 			};
 			$(window).on('scroll.events', function(){
-				var start = $('#screen-1').height() + $("#screen-3").height() + 500;
+				var start = $('#screen-1').height() + $("#screen-3").height() + $("#screen-4").height() - 300;
 				var $this = $(this);
 				var $events = $('#events');
 				var $eventsTag = $events.find('.events-tag');
-				var currentScrollTop = $this.scrollTop();
+				var currentScrollTop = $(window).scrollable().scrollTop();
 				var height = currentScrollTop-start;
 				if(height <= 500) {
-					$eventsTag.animate({
-						top : 550 - height
-					}, {
-						queue : false,
-						duration : 1000,
-						"easing" : "easeOutCubic"
-					});
-					//$eventsTag.css('top', 550 - height);
+					$eventsTag.css('top', 550 - height);
+				} else {
+					$eventsTag.css('top', 70);
 				}
 				if(currentScrollTop > start && currentScrollTop < start + 1648) {
-					$eventsTag.show();
 					$eventsTag.fadeIn(500);
-					
-					// $events.find('.mask').animate({
-						// height : height
-					// }, {
-						// queue : false,
-						// duration : 500,
-						// "easing" : "easeOutCubic"
-					// });
-					
+					$eventsTag.show();
 					$events.find('.mask').height(height);
 					
 					var eventObj = getEventByHeight(height);
@@ -97,24 +83,9 @@ jQuery.noConflict();
 					}
 				} else {
 					if(currentScrollTop < start) {
-						// $events.find('.mask').height(0);
-							// $events.find('.mask').animate({
-							// height : 0
-						// }, {
-							// queue : false,
-							// duration : 500,
-							// "easing" : "easeOutCubic"
-						// });
 						$events.find('.mask').height(0);
 					}
 					if(currentScrollTop > start + 1648) {
-						// $events.find('.mask').animate({
-							// height : 1648
-						// }, {
-							// queue : false,
-							// duration : 500,
-							// "easing" : "easeOutCubic"
-						// });
 						$events.find('.mask').height(1648);
 					}
 					$eventsTag.fadeOut(500);
@@ -345,7 +316,7 @@ jQuery.noConflict();
 
 		$(document).ready(function() {
 			var scrollable = $(window).scrollable();
-			pos = scrollable.scrollTop();
+			pos = $(window).scrollable().scrollTop();
 			parallaxes = findParallaxes();
 			moveParallax();
 			$(window).bind('scroll', function() {
@@ -386,6 +357,7 @@ jQuery.noConflict();
 						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
 					}
 				});
+				$(window).scroll(function(){$('body').data('scrollTop', $(this).scrollTop());});
 			}
 
 		});

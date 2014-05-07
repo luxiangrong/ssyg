@@ -445,7 +445,7 @@ window.requestAnimFrame = (function() {
 			parallaxes = findParallaxes();
 			moveParallax();
 			$(window).bind('scroll', function() {
-				pos = $(window).scrollTop();
+				pos = $(window).scrollable().scrollTop();
 				if(pos > $(window).height()) {
 					$(".topA").fadeIn(500);
 				} else {
@@ -463,7 +463,54 @@ window.requestAnimFrame = (function() {
 					if ($.inviewport($elem, {
 						threshold : -300
 					})) {
-						$elem.addClass('in-viewport');
+						if ($.browser.msie && $.browser.version <= 9 && !$elem.hasClass('in-viewport')) {
+							$elem.find('.title, .imgDiv').each(function(i,elem){
+								var beforePosLeft = $(elem).css('left');
+								var beforePosRight = $(elem).css('right');
+								
+								$(elem).hide();
+								$elem.addClass('in-viewport');
+								var afterPosLeft = $(elem).css('left');
+								var afterPosRight = $(elem).css('right');
+								
+								if(afterPosLeft == 'auto' || afterPosLeft == '0') {
+									afterPosLeft = false;
+								} else {
+									afterPosLeft = afterPosLeft.substring(0, afterPosLeft.length - 2);
+								}
+								
+								if(afterPosRight == 'auto') {
+									afterPosRight = false;
+								} else {
+									afterPosRight = afterPosRight.substring(0, afterPosRight.length - 2);
+								}
+								
+								$(elem).css('left',beforePosLeft);
+								$(elem).css('right',beforePosRight);
+								$(elem).show();
+								
+								if(afterPosLeft !== false) {
+									$(elem).animate({
+										 left : afterPosLeft
+									}, {
+										queue : false,
+										duration : 1000
+									});
+								}
+								if(afterPosRight !== false) {
+									$(elem).animate({
+										 right : afterPosRight
+									}, {
+										queue : false,
+										duration : 1000
+									});
+								}
+								$elem.removeClass('in-viewport');
+							});
+							$elem.addClass('in-viewport');
+						} else {
+							$elem.addClass('in-viewport');
+						}
 					}
 				});
 
@@ -496,6 +543,7 @@ window.requestAnimFrame = (function() {
 						$.scrollTo(currentScrollTop + scrollStep * bottomWheelNum, 500, function(){bottomWheelNum = 0;$('body').data('scrollTop', scrollTo);});
 					}
 				});
+				$(window).scroll(function(){$('body').data('scrollTop', $(this).scrollTop());});
 			}
 
 		});
