@@ -19,26 +19,26 @@ $(function() {
 	$('.aboutPart2Btn').find('.rightBtn').click(function() {
 		var currentPage = $('.aboutPart2').data('current') == undefined ? 0 : $('.aboutPart2').data('current');
 		var activities = $('.aboutPart2').data('activities');
-		if(!activities) {
+		if (!activities) {
 			return;
 		}
 		currentPage = parseInt(currentPage);
-		currentPage ++;
+		currentPage++;
 		currentPage = (currentPage + activities.length) % activities.length;
 		$('.aboutPart2').load(activities[currentPage]);
 		$('.aboutPart2').data('current', currentPage);
-		
+
 	});
 	$('.aboutPart2Btn').find('.leftBtn').click(function() {
 		var currentPage = $('.aboutPart2').data('current') == undefined ? 0 : $('.aboutPart2').data('current');
 		var activities = $('.aboutPart2').data('activities');
-		if(!activities) {
+		if (!activities) {
 			return;
 		}
 		currentPage = parseInt(currentPage);
-		currentPage --;
+		currentPage--;
 		currentPage = (currentPage + activities.length) % activities.length;
-		
+
 		$('.aboutPart2').load(activities[currentPage]);
 		$('.aboutPart2').data('current', currentPage);
 	});
@@ -142,40 +142,41 @@ $(function() {
 			}, 500);
 		});
 	});
-	
-	$('.site-map a').click(function(){
+
+	$('.site-map a').click(function() {
 		var href = $(this).attr('href');
 		console.log(href.indexOf('#'));
 		var hash = href.substr(href.indexOf('#') + 1);
 		console.log(hash);
 		scrollToHash(hash);
 	});
-	
-	function scrollToHash(hash){
+
+	function scrollToHash(hash) {
 		var hashMap = {
-			'siteplanning': 0,
-			'interaction': 1,
+			'siteplanning' : 0,
+			'interaction' : 1,
 			'sitedesign' : 2,
 			'sitedevelop' : 3,
-			'wap': 1,
-			'app': 2,
-			'weixin': 0,
-			'optimization': 0,
-			'maintain': 1,
-			'marketing': 2,
-			'analysis': 3,
-			'team': 0,
-			'activity': 1,
-			'news': 2,
-			'introduction': 3
+			'wap' : 1,
+			'app' : 2,
+			'weixin' : 0,
+			'optimization' : 0,
+			'maintain' : 1,
+			'marketing' : 2,
+			'analysis' : 3,
+			'team' : 0,
+			'activity' : 1,
+			'news' : 2,
+			'introduction' : 3
 		};
-		
-		if(hashMap[hash] !== undefined ) {
+
+		if (hashMap[hash] !== undefined) {
 			$('body,html').animate({
 				scrollTop : $('.partDiv').eq(hashMap[hash]).offset().top - 50
 			}, 500);
 		}
 	}
+
 	var hash = window.location.hash;
 	hash = hash.substr(1);
 	scrollToHash(hash);
@@ -188,12 +189,12 @@ $(function() {
 
 	//大事记效果
 	$('.aboutPart4').mousewheel(function(event, delta, deltaX, deltaY) {
-		if(delta > 0) {
+		if (delta > 0) {
 			var offsetX = -50;
 		} else {
 			var offsetX = 50;
 		}
-		
+
 		var $this = $(".list2 .currentCursor");
 		var minLeft = 0;
 		var maxLeft = $(".list2").width() - $this.width() - 1;
@@ -201,42 +202,53 @@ $(function() {
 		newLeft = newLeft < minLeft ? minLeft : newLeft;
 		newLeft = newLeft > maxLeft ? maxLeft : newLeft;
 		$this.animate({
-			left: newLeft
-		},{
+			left : newLeft
+		}, {
 			queue : false,
 			duration : 500
 		});
 		//$this.css('left', newLeft);
-		
+
 		$this.find('ul').animate({
-			left: -newLeft
-		},{
+			left : -newLeft
+		}, {
 			queue : false,
 			duration : 500
 		});
 		//$this.find('ul').css('left', -newLeft);
-		
+
 		$('.aboutPart4 .list').animate({
-			left: ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft)
-		},{
+			left : ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft)
+		}, {
 			queue : false,
 			duration : 500
 		});
 		//$('.aboutPart4 .list').css('left', ($(window).width() - $('.aboutPart4 .list').width()) * (newLeft / maxLeft));
-		
-		
-		if( newLeft < maxLeft && newLeft > minLeft) {
+
+		if ($this.position().left + offsetX < maxLeft && $this.position().left + offsetX > minLeft) {
 			event.stopPropagation();
 			event.preventDefault();
-		} 
-		
-		if( newLeft <= maxLeft && newLeft >= minLeft) {
-			$.scrollTo($(".aboutPart4").offset().top - 50, 500);
+		}
+
+		if ($this.position().left + offsetX <= maxLeft && $this.position().left + offsetX >= minLeft) {
+			$.scrollTo(findTotalOffset($(".aboutPart4")[0]).top - 50, 500);
 			$('body').data('scrollTop', $(".aboutPart4").offset().top - 50);
 		}
-		
-		
 	});
+
+	function findTotalOffset(obj) {
+		var ol = ot = 0;
+		if (obj.offsetParent) {
+			do {
+				ol += obj.offsetLeft;
+				ot += obj.offsetTop;
+			} while (obj = obj.offsetParent);
+		}
+		return {
+			left : ol,
+			top : ot
+		};
+	}
 
 	var inViewPercent = $(window).width() / $('.aboutPart4 .list').width();
 	$(".list2 .currentCursor").width(inViewPercent * 1100);

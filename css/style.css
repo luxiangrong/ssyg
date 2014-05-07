@@ -138,6 +138,7 @@ body {
 .case-list  .case-intro {
 	left: 0;
 	top: 0;
+	overflow-y: visible; 
 }
 
 .case-list .case-item .case-intro {

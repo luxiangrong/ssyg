@@ -13,37 +13,16 @@
 <script type="text/javascript">
 
 var myMooFlowPage = {	
-
 	start: function(){
-
 		var mf = new MooFlow($('MooFlow'), {
 			useSlider: true,
 			useAutoPlay: false,
 			useCaption: true,
 			useResize: true,
-			useKeyInput: true
+			useKeyInput: true,
+			bgColor: 'transparent'
 		});
-		
-		$$('.loadjson').addEvent('click', function(){
-			mf.loadJSON(this.get('href'));
-			return false;
-		});
-		$$('.loadremote').addEvent('click', function(){
-			mf.loadHTML(this.get('href'), this.get('rel'));
-			return false;
-		});
-		
-		var currentImg=mf.getCurrent(0);
-		$('MooFlow').addEvent('click',function(e){
-			var target=$(e.target);
-			if(currentImg.src==target.get('src')){
-			    window.open(currentImg.alt);
-			};
-			currentImg=mf.getCurrent();
-		});
-		
 	}
-	
 };
 window.addEvent('domready', myMooFlowPage.start);
 </script>

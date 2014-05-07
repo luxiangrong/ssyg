@@ -1,2 +1,16 @@
 .wal{
+	+overflow-x: hidden;        /*ie7*/
+}
+
+.section-4 {
+	overflow-x: hidden;
+	overflow-y:visible;
+	height: 1000px;
+	padding-top: 150px;
+	background:  url(../img/computer_bg_ie.jpg) center top no-repeat;
+	background-color: #fbfbfb;
+}
+
+.section-4 #stage {
+	display: none;
 }

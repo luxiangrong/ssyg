@@ -338,9 +338,9 @@
 .webPart3{height:500px; overflow:hidden; background:#eee;}
 .webPart3 .wal{height:500px; position:relative;}
 .webPart3 .title{line-height:150px; height:150px; overflow:hidden; color:#333; font-size:33px; font-weight:bold; position:absolute; z-index:3; top:150px; right:2245px; transition: all 1s;}
-.webPart3.in-viewport .title{right:245px;}
+.webPart3.in-viewport .title{right:180px;}
 .webPart3 .imgDiv{position:absolute; z-index:2; top:150px; right:-563px;opacity: 0; transition: all 1s;}
-.webPart3.in-viewport .imgDiv{right:163px;opacity:1}
+.webPart3.in-viewport .imgDiv{right:0px;opacity:1}
 .webPart3 .bg{position:absolute; z-index:1; top:0px; right:0px;}
 .webPart3 .list{position:relative; z-index:3;}
 .webPart3 li{height:122px; width:290px; overflow:hidden; position:relative; top:90px; padding-left:88px; color:#666; line-height:1.6em;}
