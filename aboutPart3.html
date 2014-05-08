@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8">
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="author" content="Tobias Wetzel" />
 <title>MooFlow V0.2 - Ajax-Example</title>
@@ -21,6 +22,14 @@ var myMooFlowPage = {
 			useResize: true,
 			useKeyInput: true,
 			bgColor: 'transparent'
+		});
+		var currentImg=mf.getCurrent(0);
+		$('MooFlow').addEvent('click',function(e){
+			var target=$(e.target);
+			if(currentImg.src==target.get('src')){
+			    window.open(currentImg.alt);
+			};
+			currentImg=mf.getCurrent();
 		});
 	}
 };
