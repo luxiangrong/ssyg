@@ -550,11 +550,15 @@ window.requestAnimFrame = (function() {
 
 		//加载动画
 		$(document).ready(function () {
+			    try {
 			    $("body").queryLoader2({
 			    	backgroundColor: '#FFFFFF',
 			    	barColor: '#CC0000',
 			    	barHeight: 3
 			    });
+			    }catch(e){
+			    	
+			    }
 			});
 
 	});

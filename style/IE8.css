@@ -14,3 +14,15 @@
 .section-4 #stage {
 	display: none;
 }
+
+#events .events-tag dt{
+	+margin-right: 10px;
+}
+
+#events .events-tag dd{
+	+width: 590px;
+}
+
+#events .events-tag .events-tag-body-middle {
+    +margin-left: 0px;
+}
