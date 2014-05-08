@@ -122,8 +122,6 @@ body {
 	font-size: 14px;
 	color: #a8a8a8;
 	text-align: center;
-	opacity: 0;
-	filter:alpha(opacity=0)
 }
 
 .case-list  .case-pic, .case-list .case-intro {
@@ -463,6 +461,10 @@ body {
 	padding-right: 10px;
 }
 
+.contact-info dl {
+	zoom: 1;
+}
+
 .contact-info dt {
 	float: left;
 }
@@ -476,29 +478,27 @@ body {
 }
 
 .contact-info .circle-btn {
-	background-image: none;
-	background-color: #FFFFFF;
+	background: url(../img/circle_btn_bg_72.png) no-repeat left top;
 	display: block;
 	width: 72px;
 	height: 72px;
 	line-height: 72px;
-	-webkit-border-radius: 36px 36px 36px 36px;
-	 -moz-border-radius: 36px 36px 36px 36px;
-	border-radius: 36px 36px 36px 36px;
-	border: 0px solid #bdbdbd;
 	text-align: center;
 	margin-right: 10px;
 	margin: 10px;
 	color: #999;
 	font-size: 24px;
 	position: relative;
-	behavior: url(js/pie/PIE.htc);
 	padding-top: 0;
 }
 
 .contact-info .circle-btn:hover {
-	background-color: #E60012;
+	background-position: -72px top;
 	color: #FFF;
+}
+
+.contact-info .glyphicon:before {
+	display: none;
 }
 
 /*

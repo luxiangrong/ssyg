@@ -26,3 +26,35 @@
 #events .events-tag .events-tag-body-middle {
     +margin-left: 0px;
 }
+
+#screen-1 .col-sm-4, #screen-6 .col-sm-6, #screen-6 .col-sm-5 , #screen-6 .col-sm-3,#events .col-sm-12{
+	+padding: 0;
+}
+
+.img-responsive {
+	width: 100%;
+}
+
+.case-list .case-item .case-intro {
+	+width: auto;
+}
+
+.case-list a {
+	+text-decoration: none;
+	+cursor: pointer;
+}
+
+.contact-info .circle-btn {
+	+padding-top: 20px;
+	+height: 52px;
+	+text-decoration: none;
+}
+
+.contact-info .glyphicon {
+	+display: block;
+}
+
+#events .events-points a{
+	+margin-left: 20px;
+	margin-left: -5px;
+}

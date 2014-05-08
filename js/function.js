@@ -106,6 +106,7 @@ jQuery.noConflict();
 
 
 			//案例展示部分
+			$(".case-intro") .css('opacity', 0); // hack IE8上放大镜按钮被遮盖了
 			$(".case-list .case-item").hover(function(e) {
 				e.stopPropagation();
 				$this = $(this);
@@ -125,6 +126,9 @@ jQuery.noConflict();
 					duration : 500,
 					"easing" : "easeOutCubic"
 				});
+				if($.browser.version <= 8) {
+					caseIntroElem.css('opacity', 1);
+				}
 				caseIntroElem.stop(true, true).animate({
 					top : height / 2,
 					opacity : 1
@@ -149,6 +153,9 @@ jQuery.noConflict();
 					duration : 500,
 					"easing" : "easeOutCubic"
 				});
+				if($.browser.version <= 8) {
+					caseIntroElem.css('opacity', 0);
+				}
 				caseIntroElem.stop(true, false).animate({
 					top : 0,
 					opacity : 0
@@ -364,12 +371,13 @@ jQuery.noConflict();
 
 		//加载动画
 		$(document).ready(function () {
+			try{
 			    $("body").queryLoader2({
 			    	backgroundColor: '#FFFFFF',
 			    	barColor: '#CC0000',
 			    	barHeight: 3
 			    });
-			});
-
+			}catch(e){}
+		});
 	});
 })(jQuery);
