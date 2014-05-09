@@ -71,7 +71,7 @@
 				滑雪记
 			</div>
 			<div class="contentDiv">
-				<ul>
+				<ul style="margin-right: -100000px;">
 					<li>
 						<div class="title1">
 							<b class="red">强身健体、笑迎末日</b>
@@ -158,7 +158,7 @@
 					<div class="fl">
 						<span class="spanNow"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 					</div>
-					<div class="fr">
+					<div class="fr" style="width: 50px;">
 						<a href="javascript:;" class="leftBtn"></a>
 						<a href="javascript:;" class="rightBtn"></a>
 					</div>
@@ -181,6 +181,7 @@
 				$('.activity').find('.contentDiv').mousewheel(function(event, delta) {
 					$('.activity').find('.contentDiv').scrollLeft($('.activity').find('.contentDiv').scrollLeft() - delta * 30);
 					event.preventDefault();
+					event.stopPropagation();
 					activityLeft = 0;
 					$('.activity').find('.contentDiv').find('li').each(function(ii) {
 						activityLeft = activityLeft + $(this).width() + 40;
@@ -194,6 +195,7 @@
 				//--
 				$('.activity').find('.centerDiv').find('span').each(function(i) {
 					$(this).click(function() {
+						calcActiveyULWidth();
 						$('.activity').find('.centerDiv').find('span').removeClass('spanNow');
 						$(this).addClass('spanNow');
 						activityNow = i;
@@ -209,6 +211,7 @@
 					})
 				})
 				$('.activity').find('.rightBtn').click(function() {
+					calcActiveyULWidth();
 					if (activityNow < $('.activity').find('.contentDiv').find('li').length - 1) {
 						activityNow++;
 						activityLeft = 0;
@@ -225,6 +228,7 @@
 					}
 				})
 				$('.activity').find('.leftBtn').click(function() {
+					calcActiveyULWidth();
 					if (activityNow > 0) {
 						activityNow--;
 						activityLeft = 0;
@@ -249,6 +253,12 @@
 				$('.activity').find('.btnDiv').css('top', $(window).height() - 160);
 				$('.activity').find('.centerDiv').width($(window).width() - 502);
 				//--
+				$('.activity').find('.contentDiv').find('li').each(function() {
+					activityULwidth = activityULwidth + $(this).width() + 40;
+				})
+				//$('.activity').find('.contentDiv').find('ul').width(activityULwidth);
+			}
+			function calcActiveyULWidth() {
 				$('.activity').find('.contentDiv').find('li').each(function() {
 					activityULwidth = activityULwidth + $(this).width() + 40;
 				})
