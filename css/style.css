@@ -40,6 +40,62 @@ body {
 	text-align: center;
 }
 
+.screen-1-wrap .computer-slider {
+	background: url(../images/s1_bg.png) no-repeat center center;
+	width: 665px;
+	height: 653px;
+	padding-left: 27px;
+	padding-top: 27px;
+	overflow: hidden;
+}
+
+.screen-1-wrap .computer-slider .left-arraw {
+	position: absolute;
+	left: 30px;
+	top: 180px;
+	cursor: pointer;
+	opacity: 0.5;
+	background: url(../images/left_arraw.png) no-repeat left center;
+	width:30px;
+	height: 59px;
+}
+
+.screen-1-wrap .computer-slider .right-arraw {
+	position: absolute;
+	left: 605px;
+	top: 180px;
+	cursor: pointer;
+	opacity: 0.5;
+	background: url(../images/right_arraw.png) no-repeat left center;
+	width:30px;
+	height: 59px;
+}
+
+.screen-1-wrap .computer-slider .left-arraw:hover,
+.screen-1-wrap .computer-slider .right-arraw:hover {
+	opacity: 1;
+}
+
+.screen-1-wrap .computer-slider ul {
+	float:left;
+    margin-right:-30000px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.screen-1-wrap .computer-slider li {
+	float:left;
+	width: 611px;
+	height: 368px;
+	margin-right: 27px;
+}
+
+.screen-1-wrap .computer-slider li img{
+	position: static;
+}
+
 /*============ screen 2===============*/
 .circle-btn{
 	background: url("../image/indexPart1Bg1.png") no-repeat scroll left top;
@@ -500,6 +556,18 @@ body {
 .contact-info .glyphicon:before {
 	display: none;
 }
+
+#screen-feedback {
+	
+}
+
+#screen-feedback .feedbak { 
+	
+	position: relative; 
+	overflow: auto; 
+}
+#screen-feedback    .feedbak li { list-style: none; width: 100%;}
+#screen-feedback       .feedbak ul li { float: left; }
 
 /*
  * footer

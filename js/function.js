@@ -366,7 +366,34 @@ jQuery.noConflict();
 				});
 				$(window).scroll(function(){$('body').data('scrollTop', $(this).scrollTop());});
 			}
-
+			
+			var computerSliderCount = $(".computer-slider").find("ul li").length;
+			var computerSliderItemWidth = $(".computer-slider").find("ul li").width() + 27;
+			$(".computer-slider").find("ul").width(computerSliderCount * computerSliderItemWidth);
+			$(".computer-slider").find(".right-arraw").on("click", function(){
+				var current = $(".computer-slider").data("current")==undefined ? 0: parseInt($(".computer-slider").data("current"));
+				current = current + 1;
+				if(current >= computerSliderCount) {
+					current = 0;
+				}
+				$(".computer-slider").find("ul").animate({
+					"margin-left": - current * computerSliderItemWidth
+				}, 500);
+				$(".computer-slider").data("current", current % computerSliderCount);
+			});
+			$(".computer-slider").find(".left-arraw").on("click", function(){
+				var current = $(".computer-slider").data("current")==undefined ? 0: parseInt($(".computer-slider").data("current"));
+				current = current -1;
+				if(current <= -1) {
+					current = computerSliderCount - 1;
+				}
+				$(".computer-slider").find("ul").animate({
+					"margin-left": - current * computerSliderItemWidth
+				}, 500);
+				$(".computer-slider").data("current", current);
+			});
+			
+			$('.feedbak').unslider({dots: true});
 		});
 
 		//加载动画
