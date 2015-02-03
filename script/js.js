@@ -90,6 +90,16 @@ $(function() {
 		$(this).find('img:first').fadeIn(500);
 		$(this).find('img:last').fadeOut(500);
 	});
+	$('.shopPart1').find('li').find('img:first').fadeIn(500);
+	$('.shopPart1').find('li').hover(function() {
+		$(this).addClass('liNow');
+		$(this).find('img:first').fadeOut(500);
+		$(this).find('img:last').fadeIn(500);
+	}, function() {
+		$(this).removeClass('liNow');
+		$(this).find('img:first').fadeIn(500);
+		$(this).find('img:last').fadeOut(500);
+	});
 	//--MobilePart2(复杂特效)
 	//--微产品
 	$('.MobilePart3').find('li').hover(function() {
@@ -135,6 +145,14 @@ $(function() {
 			}, 500);
 		});
 	});
+	$('.shopPart1').find('a').each(function(i) {
+		$(this).click(function() {
+			$('body,html').animate({
+				scrollTop : $('.partDiv').eq(i).offset().top - 50
+			}, 500);
+		});
+	});
+	
 	$('.MobilePart1').find('a').each(function(i) {
 		$(this).click(function() {
 			$('body,html').animate({
