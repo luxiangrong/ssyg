@@ -4,7 +4,7 @@
 
 body {
 	background-color: #e4e5e7;
-	font-family:"微软雅黑";
+	font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
 .header {
@@ -220,7 +220,7 @@ body {
 .section-4 {
 	overflow-x: hidden;
 	overflow-y:visible;
-	height: 1000px;
+	height: 850px;
 	padding-top: 150px;
 	background:  url(../img/computer.png) center top no-repeat;
 	background-color: #fbfbfb;
@@ -557,17 +557,130 @@ body {
 	display: none;
 }
 
+/*===============screen feedback===============*/
 #screen-feedback {
-	
+	background-color: #f4f4f4;	
 }
 
 #screen-feedback .feedbak { 
-	
 	position: relative; 
 	overflow: auto; 
+	width: 1257px;
+	margin: 0 auto;
+	padding: 30px 0;
 }
-#screen-feedback    .feedbak li { list-style: none; width: 100%;}
-#screen-feedback       .feedbak ul li { float: left; }
+
+#screen-feedback .feedbak ul { 
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	zoom: 1;
+	display: inline-block;
+}
+#screen-feedback .feedbak ul li {
+	float: left; 
+	position: relative;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+#screen-feedback .feedbak ul li .avator {
+	float: left;
+	margin-right: 20px;
+}
+
+#screen-feedback .feedbak ul li p {
+	font-size: 12px;
+	color: #8d8d8d;
+	line-height: 1.6;
+}
+
+#screen-feedback .feedbak ul li em {
+	font-size: 12px;
+	color: #8d8d8d;
+	font-style: normal;
+	display: block;
+	text-align: right;
+}
+
+#screen-feedback .feedbak ul li .quote-l {
+	position: absolute;
+	left: 100px;
+	top: 0px;
+	width: 57px;
+	height: 53px;
+	background: url(../images/quote_l.png) no-repeat center center;
+}
+
+#screen-feedback .feedbak ul li .quote-r {
+	position: absolute;
+	right: 100px;
+	bottom: 0px;
+	width: 57px;
+	height: 53px;
+	background: url(../images/quote_r.png) no-repeat center center;
+}
+
+.feedbak .dot {
+	background: url(../images/b21.png) no-repeat 0 -10px;
+}
+	
+.feedbak .dots {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0px;
+	
+	text-align: center;
+}
+.feedbak .dots li {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 0 4px;
+	
+	text-indent: -999em;
+	cursor: pointer;
+	background: url(../images/b21.png) no-repeat -98px center;
+}
+.feedbak .dots li.active {
+	background-position: -38px center;
+}
+
+/*===============screen-news===============*/
+#screen-news {
+	background-color: #f4f4f4;
+	height: 175px;
+}
+
+#screen-news .news-box{
+	width: 977px;
+	margin: 0 auto;
+	padding: 40px 0;
+	position: relative;
+	padding-right: 180px;
+}
+
+#screen-news .news-box h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	color: #666666;
+	line-height: 2;
+}
+
+#screen-news .news-box p {
+	color: #666666;
+	font-size: 14px;
+	line-height: 1.8;
+}
+
+#screen-news .news-box .btn-more-news {
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	margin-top: -25px;
+}
 
 /*
  * footer
@@ -586,7 +699,8 @@ footer {
 	padding-right: 0;
 }
 
-.site-map a {
+.site-map a,
+.product-site ul li a  {
 	transition: all 0.5s;
 }
 
@@ -598,13 +712,14 @@ footer {
 	line-height: 35px;
 }
 
-.site-map .list-group-item.title, .site-map .list-group-item.title a {
+.site-map .list-group-item.title, .site-map .list-group-item.title a  {
 	color: #C0C0C0;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-.site-map .list-group-item.title a:hover {
+.site-map .list-group-item.title a:hover,
+.product-site ul li a:hover {
 	color: #ff1100;
 }
 
@@ -661,6 +776,38 @@ footer {
 
 hr {
 	border-color: #2c2c2c;
+}
+
+
+.product-site {
+	color: #bbbbbb;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.product-site h4 {
+	font-size: 14px;
+	margin: 10px 0;
+}
+
+.product-site ul {
+	margin: 0;
+	padding: 0;
+}
+
+.product-site ul li {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.product-site ul li {
+	*display: inline;
+}
+
+.product-site ul li a {
+	background-color: transparent;
+	color: #C0C0C0;
+	text-decoration: none;
 }
 
 /*=============== 加载动画 ===============*/

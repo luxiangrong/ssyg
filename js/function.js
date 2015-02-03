@@ -60,7 +60,7 @@ jQuery.noConflict();
 				return result;
 			};
 			$(window).on('scroll.events', function(){
-				var start = $('#screen-1').height() + $("#screen-3").height() + $("#screen-4").height() - 300;
+				var start = $('#screen-1').height() + $("#screen-feedback").height() + $("#screen-news").height() + $("#screen-3").height() + $("#screen-4").height() - 300;
 				var $this = $(this);
 				var $events = $('#events');
 				var $eventsTag = $events.find('.events-tag');
@@ -393,7 +393,11 @@ jQuery.noConflict();
 				$(".computer-slider").data("current", current);
 			});
 			
-			$('.feedbak').unslider({dots: true});
+			$('.feedbak').unslider({
+				dots: true,
+				delay: 3000,
+				fluid: false 
+			});
 		});
 
 		//加载动画

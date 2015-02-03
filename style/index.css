@@ -227,6 +227,10 @@
 .aboutPart5 .list .liNow .red{color:#FFF;}
 .aboutPart5 .content{font-size:14px; line-height:1.6em; color:#000; text-align:justify;}
 
+.aboutPart6 {
+	width:860px; margin:0 auto;
+}
+
 .aboutNav{position:fixed; z-index:100; top:150px; right:50px;}
 .aboutNav a{display:block; height:35px; line-height:35px; padding-left:20px; background:url(../image/ico1.png) left center no-repeat;}
 .aboutNav a:hover, .aboutNav .aNow{background:url(../image/ico2.png) left center no-repeat; color:#DA0313;}
