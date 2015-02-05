@@ -515,9 +515,24 @@ window.requestAnimFrame = (function() {
 				});
 
 			});
+			
+			function check_os() {
+				windows = (navigator.userAgent.indexOf("Windows",0) != -1)?1:0;
+				mac = (navigator.userAgent.indexOf("mac",0) != -1)?1:0;
+				linux = (navigator.userAgent.indexOf("Linux",0) != -1)?1:0;
+				unix = (navigator.userAgent.indexOf("X11",0) != -1)?1:0;
+			 
+			 	var os_type;
+				if (windows) os_type = "MS Windows";
+				else if (mac) os_type = "Apple mac";
+				else if (linux) os_type = "Lunix";
+				else if (unix) os_type = "Unix";
+			 
+				return os_type;
+			}
 
 			//chrome浏览器滚轮平滑滚动
-			if ($.browser.webkit || $.browser.msie) {
+			if (($.browser.webkit || $.browser.msie) && check_os() == "MS Windows") {
 				var scrollStep = 100;
 				var bottomWheelNum = 0;
 				var topWheelNum = 0;
